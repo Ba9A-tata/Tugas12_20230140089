@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendaftaran Mekanik Ducati Corse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #8e0e00, #1f1c18);
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 35px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 540px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      color: #b30000;
+      margin-bottom: 28px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #b30000;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      color: #444;
+      padding-left: 5px;
+    }
+
+    button {
+      background: #b30000;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #8e0000;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pendaftaran Mekanik Ducati Corse</h2>
+    <form onsubmit="kirimData(); return false;">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" placeholder="Masukkan nama Anda" required />
+
+      <label for="nim">Nomor Registrasi</label>
+      <input type="text" id="nim" placeholder="Nomor pendaftaran" required />
+
+      <label>Spesialisasi Mekanik:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="peminatan" value="Mesin" required /> Mesin</label>
+        <label><input type="radio" name="peminatan" value="Suspensi" /> Suspensi</label>
+        <label><input type="radio" name="peminatan" value="Elektronik" /> Elektronik</label>
+        <label><input type="radio" name="peminatan" value="Ban & Traksi" /> Ban & Traksi</label>
+      </div>
+
+      <label for="alamat">Alamat Domisili</label>
+      <textarea id="alamat" rows="3" placeholder="Contoh: Jl. Marc Marquez  No 93 , Carvera Catalunya, Spanyol" required></textarea>
+
+      <label for="angkatan">Tahun Bergabung</label>
+      <select id="angkatan" required>
+        <option value="">-- Pilih Tahun --</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+
+      <label for="tanggal">Tanggal Pendaftaran</label>
+      <input type="date" id="tanggal" required />
+
+      <button type="submit">Daftar Sekarang</button>
+    </form>
+  </div>
+
+  <script>
+    function kirimData() {
+      const nama = document.getElementById("nama").value;
+      const nim = document.getElementById("nim").value;
+      const peminatan = document.querySelector('input[name="peminatan"]:checked')?.value;
+      const alamat = document.getElementById("alamat").value;
+      const angkatan = document.getElementById("angkatan").value;
+      const tanggal = document.getElementById("tanggal").value;
+
+      alert(
+        `Nama       : ${nama}\n` +
+        `Registrasi : ${nim}\n` +
+        `Spesialis  : ${peminatan}\n` +
+        `Alamat     : ${alamat}\n` +
+        `Bergabung  : ${angkatan}\n` +
+        `Tanggal    : ${tanggal}`
+      );
+    }
+  </script>
+</body>
+</html>
